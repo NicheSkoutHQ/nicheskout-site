@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://nicheskouthq.github.io/nicheskout-site/sitemap.xml
