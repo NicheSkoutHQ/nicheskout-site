@@ -98,6 +98,9 @@
     .btn:hover{transform:translateY(-1px)}
     .btn--ghost{background:transparent;color:var(--color-text);border:1px solid rgba(148,163,184,.25)}
 
+    .hero-form{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .hero-form .hero-input{flex:1;min-width:220px}
+
     .hero{padding:64px 0 40px}
     .hero__wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
     .pill{display:inline-flex;gap:8px;align-items:center;font-size:14px;color:var(--color-muted);border:1px solid rgba(148,163,184,.25);padding:6px 10px;border-radius:999px}
@@ -106,6 +109,8 @@
     .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
     .card{background:var(--color-surface);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px}
     .brand-preview{margin-top:12px;border-radius:14px;border:1px solid rgba(148,163,184,.18);width:100%;display:block}
+    .success{background:rgba(94,234,212,.12);border:1px solid rgba(94,234,212,.35);color:#d1fae5;padding:10px;border-radius:10px;margin-top:10px;display:none}
+    .success.show{display:block}
 
     section{padding:40px 0}
     .section__head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
@@ -173,15 +178,23 @@
           <a class="btn" href="#contact">Book a free 15‑min intro</a>
           <a class="btn btn--ghost" href="#services">See how it works</a>
         </div>
+          <form id="hero_form" class="hero-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+            <input type="hidden" name="_subject" value="Request: 14-day sprint outline">
+            <input type="hidden" name="_next" value="https://nicheskouthq.github.io/nicheskout-site/?sub=1">
+            <input type="hidden" name="_captcha" value="false">
+            <input class="hero-input" type="email" name="email" placeholder="Your email" required aria-label="Email">
+            <button class="btn" type="submit">Request the outline</button>
+          </form>
+          <div id="subscribed" class="success">Thanks! We’ll send the 14-day sprint outline soon.<br><a class="btn" href="NicheSkout_14-day_Sprint_Outline.pdf" target="_blank" rel="noopener">Download the 14‑day outline (PDF)</a></div>
       </div>
       <div class="card">
-        <span class="badge">What you get<\/span>
+        <span class="badge">What you get</span>
         <ul>
-          <li>Hands‑on niche validation with real buyer signals<\/li>
-          <li>Offer design & pricing guidance<\/li>
-          <li>Simple launch assets (site, socials, outreach)<\/li>
-          <li>1–2 week sprint with measurable milestones<\/li>
-        <\/ul>
+          <li>Hands‑on niche validation with real buyer signals</li>
+          <li>Offer design & pricing guidance</li>
+          <li>Simple launch assets (site, socials, outreach)</li>
+          <li>1–2 week sprint with measurable milestones</li>
+        </ul>
         <img src="og-image.png" alt="NicheSkout brand preview" class="brand-preview">
       </div>
     </div>
@@ -197,7 +210,7 @@
       <div class="grid grid-2">
         <div class="card">
           <p><strong>We’re operators.</strong> We move founders from idea to traction with tight, test‑driven sprints. No vanity metrics. Just signals that matter.</p>
-          <p class="muted">TODO: Replace this paragraph with your brand story, mission, and credibility proof (past wins, testimonials, or process). Keep it concise.</p>
+          <p class="muted">We partner with founders to nail the ICP, shape an irresistible offer, and pressure‑test channels quickly. Every sprint ships artifacts you can use immediately: a validation page, outreach templates, and a simple tracking loop so you know what’s working.</p>
         </div>
         <div class="about__stats">
           <div class="stat"><strong>50+</strong><span class="muted">Niches tested</span></div>
@@ -260,8 +273,14 @@
           <a class="btn" href="mailto:hello@nicheskout.com" aria-label="Email us">Email us</a>
           <span class="note">Prefer socials? See links below.</span>
         </div>
-        <form class="card" onsubmit="alert('This is a static site. Replace with your form provider (e.g., Formspree) before going live.'); return false;" aria-labelledby="contact_form">
+        <form id="contact_form_el" class="card" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST" aria-labelledby="contact_form">
           <h3 id="contact_form" style="margin:0 0 4px">Quick message</h3>
+          <!-- FormSubmit config -->
+          <input type="hidden" name="_subject" value="New message from NicheSkout site">
+          <input type="hidden" name="_next" value="https://nicheskouthq.github.io/nicheskout-site/?sent=1">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="text" name="_honey" style="display:none">
+
           <label for="name">Name</label>
           <input id="name" name="name" placeholder="Your name" required>
           <label for="email">Email</label>
@@ -269,8 +288,9 @@
           <label for="msg">Message</label>
           <textarea id="msg" name="message" rows="4" placeholder="What do you want to launch?" required></textarea>
           <button class="btn" type="submit">Send</button>
-          <p class="muted" style="margin:6px 0 0">Note: This demo form shows an alert. Hook it to a service like Formspree for real submissions.</p>
+          <p class="muted" style="margin:6px 0 0">Note: Replace <code>YOUR_EMAIL_HERE</code> in the form action with the address where you want to receive messages (personal for now is fine).</p>
         </form>
+        <div id="success" class="success">Thanks! We got your message and will reply within 1 business day.</div>
       </div>
     </div>
   </section>
@@ -304,6 +324,74 @@
   <script>
     // Accessibility & polish
     document.getElementById('year').textContent = new Date().getFullYear();
+    const params = new URLSearchParams(location.search);
+    if (params.get('sent') === '1') { const el = document.getElementById('success'); if (el) el.classList.add('show'); }
+  </script>
+  <script>
+    // === Lightweight GA4 event tracking ===
+    (function(){
+      function send(event, params){ if (typeof window.gtag === 'function') { window.gtag('event', event, params || {}); } }
+
+      // Track CTA button clicks
+      document.querySelectorAll('a.btn').forEach(function(a){
+        a.addEventListener('click', function(){
+          send('select_content', { content_type: 'cta', item_id: a.textContent.trim() });
+        });
+      });
+
+      // Track social icon clicks
+      document.querySelectorAll('.socials a').forEach(function(a){
+        a.addEventListener('click', function(){
+          send('select_content', { content_type: 'social', item_id: a.getAttribute('aria-label') || a.href });
+        });
+      });
+
+      // Track mailto click (generate_lead)
+      var emailBtn = document.querySelector('a[aria-label="Email us"]');
+      if (emailBtn) {
+        emailBtn.addEventListener('click', function(){ send('generate_lead', { method: 'mailto' }); });
+      }
+
+      // Track contact form submit (generate_lead) with callback before redirect
+      var form = document.getElementById('contact_form_el');
+      if (form) {
+        form.addEventListener('submit', function(ev){
+          if (typeof window.gtag === 'function') {
+            ev.preventDefault();
+            window.gtag('event', 'generate_lead', {
+              method: 'form',
+              event_callback: function(){ form.submit(); },
+              event_timeout: 2000
+            });
+            // Fallback submit if callback doesn't fire
+            setTimeout(function(){ form.submit(); }, 1000);
+          }
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    // Hero mini-form tracking + success banner
+    (function(){
+      var params = new URLSearchParams(location.search);
+      var sub = document.getElementById('subscribed');
+      if (params.get('sub') === '1' && sub) sub.classList.add('show');
+      var hf = document.getElementById('hero_form');
+      if (hf) {
+        hf.addEventListener('submit', function(ev){
+          if (typeof window.gtag === 'function') {
+            ev.preventDefault();
+            window.gtag('event', 'generate_lead', {
+              method: 'hero_optin',
+              event_callback: function(){ hf.submit(); },
+              event_timeout: 2000
+            });
+            setTimeout(function(){ hf.submit(); }, 1000);
+          }
+        });
+      }
+    })();
   </script>
 
   <!-- Analytics placeholder: paste your GA/Umami/Plasmo snippet here -->
