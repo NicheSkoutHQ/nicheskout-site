@@ -14,7 +14,14 @@
   <meta property="og:locale" content="en_US">
   <link rel="canonical" href="https://nicheskouthq.github.io/nicheskout-site/">
   <meta property="og:image" content="og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="theme-color" content="#0f172a">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="manifest" href="site.webmanifest">
 
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
@@ -31,6 +38,34 @@
     2) Update text content and links (search for TODO).
     3) Save as index.html. This single file works perfectly on GitHub Pages.
   -->
+
+  <!-- Google Search Console (replace CONTENT_VALUE after you add the property) -->
+  <meta name="google-site-verification" content="CONTENT_VALUE" />
+
+  <!-- Google Analytics 4 (replace G-XXXXXXXXXX with your Measurement ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} 
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Organization structured data for richer previews -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "NicheSkout",
+    "url": "https://nicheskouthq.github.io/nicheskout-site/",
+    "logo": "https://nicheskouthq.github.io/nicheskout-site/apple-touch-icon.png",
+    "sameAs": [
+      "https://x.com/NicheSkoutHQ",
+      "https://www.instagram.com/nicheskout/",
+      "https://www.linkedin.com/company/nicheskouthq/"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -55,7 +90,7 @@
     header{position:sticky;top:0;background:rgba(11,18,32,.6);backdrop-filter: blur(10px);border-bottom:1px solid rgba(148,163,184,.15);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px;font-weight:700}
-    .brand__logo{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--color-primary),#6ee7f9);box-shadow:var(--shadow)}
+    .brand__logo{width:32px;height:32px;display:block;border-radius:8px;object-fit:contain}
     .nav__links{display:flex;gap:18px;flex-wrap:wrap}
     .nav__a{opacity:.9}
     .nav__a:hover,.nav__a:focus{opacity:1}
@@ -70,6 +105,7 @@
     .lead{font-size:18px;color:var(--color-muted);margin:0 0 18px}
     .hero__cta{display:flex;gap:12px;flex-wrap:wrap}
     .card{background:var(--color-surface);border:1px solid rgba(148,163,184,.15);border-radius:var(--radius);padding:18px}
+    .brand-preview{margin-top:12px;border-radius:14px;border:1px solid rgba(148,163,184,.18);width:100%;display:block}
 
     section{padding:40px 0}
     .section__head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
@@ -114,7 +150,7 @@
   <header>
     <div class="container nav">
       <div class="brand" aria-label="NicheSkout home">
-        <div class="brand__logo" aria-hidden="true"></div>
+        <img class="brand__logo" src="logo-mark-32.png" width="32" height="32" alt="NicheSkout logo">
         <span>NicheSkout</span>
       </div>
       <nav class="nav__links" aria-label="primary">
@@ -139,13 +175,14 @@
         </div>
       </div>
       <div class="card">
-        <span class="badge">What you get</span>
+        <span class="badge">What you get<\/span>
         <ul>
-          <li>Hands‑on niche validation with real buyer signals</li>
-          <li>Offer design & pricing guidance</li>
-          <li>Simple launch assets (site, socials, outreach)</li>
-          <li>1–2 week sprint with measurable milestones</li>
-        </ul>
+          <li>Hands‑on niche validation with real buyer signals<\/li>
+          <li>Offer design & pricing guidance<\/li>
+          <li>Simple launch assets (site, socials, outreach)<\/li>
+          <li>1–2 week sprint with measurable milestones<\/li>
+        <\/ul>
+        <img src="og-image.png" alt="NicheSkout brand preview" class="brand-preview">
       </div>
     </div>
   </section>
@@ -272,3 +309,4 @@
   <!-- Analytics placeholder: paste your GA/Umami/Plasmo snippet here -->
 </body>
 </html>
+
