@@ -161,6 +161,7 @@
       <nav class="nav__links" aria-label="primary">
         <a class="nav__a" href="#about">About</a>
         <a class="nav__a" href="#services">Services</a>
+        <a class="nav__a" href="#brand">Brand</a>
         <a class="nav__a" href="#contact">Contact</a>
         <a class="btn btn--ghost" href="#contact">Get Started</a>
       </nav>
@@ -182,7 +183,13 @@
             <input type="hidden" name="_subject" value="Request: 14-day sprint outline">
             <input type="hidden" name="_next" value="https://nicheskouthq.github.io/nicheskout-site/?sub=1">
             <input type="hidden" name="_captcha" value="false">
-            <input class="hero-input" type="email" name="email" placeholder="Your email" required aria-label="Email">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_autoresponse" value="Thanks for requesting the 14‑Day Sprint Outline!
+
+Download it here: https://nicheskouthq.github.io/nicheskout-site/NicheSkout_14-day_Sprint_Outline.pdf
+
+We’ll follow up soon with a short checklist.
+— NicheSkout">            <input class="hero-input" type="email" name="email" placeholder="Your email" required aria-label="Email">
             <button class="btn" type="submit">Request the outline</button>
           </form>
           <div id="subscribed" class="success">Thanks! We’ll send the 14-day sprint outline soon.<br><a class="btn" href="NicheSkout_14-day_Sprint_Outline.pdf" target="_blank" rel="noopener">Download the 14‑day outline (PDF)</a></div>
@@ -260,6 +267,28 @@
     </div>
   </section>
 
+  <!-- === Brand === -->
+  <section id="brand">
+    <div class="container">
+      <div class="section__head">
+        <h2 class="h2">Brand assets</h2>
+        <span class="muted">Download logos & banners</span>
+      </div>
+      <div class="card">
+        <ul>
+          <li><a href="ns-logo-mono-reverse-512.png" download>Logo mark (square, 512px)</a></li>
+          <li><a href="ns-logo-lockup-stacked-tagline-1080.png" download>Stacked lockup (1080×1080)</a></li>
+          <li><a href="ns-logo-lockup-horizontal-tagline-1600x900.png" download>Horizontal lockup (1600×900)</a></li>
+          <li><a href="ns-logo-lockup-horizontal-tagline-linkedin-cover.png" download>LinkedIn cover (1584×396)</a></li>
+          <li><a href="ns-logo-lockup-horizontal-tagline-x-banner.png" download>X banner (1500×500)</a></li>
+          <li><a href="nicheskout_brand_pack.zip" download>All logos (ZIP)</a></li>
+          <li><a href="nicheskout_brand_pack.tar.gz" download>All logos (TAR.GZ)</a></li>
+        </ul>
+        <p class="muted">Upload these files to your repo root for the links to work.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- === Contact === -->
   <section id="contact">
     <div class="container">
@@ -279,7 +308,10 @@
           <input type="hidden" name="_subject" value="New message from NicheSkout site">
           <input type="hidden" name="_next" value="https://nicheskouthq.github.io/nicheskout-site/?sent=1">
           <input type="hidden" name="_captcha" value="false">
-          <input type="text" name="_honey" style="display:none">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_autoresponse" value="Thanks for reaching out to NicheSkout! We’ll reply within 1 business day.
+
+Meanwhile, here’s our 14‑Day Sprint Outline: https://nicheskouthq.github.io/nicheskout-site/NicheSkout_14-day_Sprint_Outline.pdf">          <input type="text" name="_honey" style="display:none">
 
           <label for="name">Name</label>
           <input id="name" name="name" placeholder="Your name" required>
@@ -397,4 +429,3 @@
   <!-- Analytics placeholder: paste your GA/Umami/Plasmo snippet here -->
 </body>
 </html>
-
